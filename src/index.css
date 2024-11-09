@@ -1,0 +1,16 @@
+:root {
+  font-family: "Gloria Hallelujah", "Pacifico", sans-serif;
+  background-color: var(--bg-color);
+  --font-family-accent: "Gloria Hallelujah", "Pacifico", sans-serif;
+  --bg-color: #1D1E2C;
+  --accent-color: #F7EBEC;
+  --accent-modules-color: #59656F;
+  --accent-hover-color: #AC9FBB;
+  --accent-extra-color: #DDBDD5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+

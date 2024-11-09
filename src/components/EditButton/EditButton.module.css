@@ -1,0 +1,11 @@
+.editButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+
+.editButton:hover {
+  transform: scale(1.2);
+}
+

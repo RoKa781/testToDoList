@@ -1,0 +1,105 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
+  border-bottom: 1px solid var(--accent-modules-color);
+  background-color: var(--bg-color);
+  color: var(--accent-color);
+  font-family: var(--font-family-accent);
+  font-size: 30px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.overlayOpen {
+  opacity: 1;
+  z-index: 0;
+  visibility: visible;
+}
+
+.overlayHidden {
+  opacity: 0;
+  z-index: -1;
+  visibility: hidden;
+  transition: 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.drawer {
+  top: 0;
+  flex: 1 0 auto;
+  height: 100%;
+  display: flex;
+  outline: 0;
+  z-index: 1200;
+  position: fixed;
+  overflow-y: auto;
+  flex-direction: column;
+  background-color: var(--bg-color);
+  color: var(--accent-color);
+  width: 300px;
+  flex-shrink: 0;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+}
+
+.hidden {
+  visibility: hidden;
+  width: 240px;
+  transform: translateX(240px);
+  flex-shrink: 0;
+  transition: 325ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  overflow: hidden;
+}
+
+.animate {
+  visibility: visible;
+  transform: none;
+  box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2),
+    0px 16px 24px 2px rgba(0, 0, 0, 0.14), 0px 6px 30px 5px rgba(0, 0, 0, 0.12);
+}
+
+.left {
+  left: 0;
+  right: auto;
+}
+
+.right {
+  right: 0;
+  left: auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+  gap: 10px;
+  box-shadow: 0px 1px 20px 10px var(--accent-extra-color);
+}
+
+.input {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid var(--accent-modules-color);
+  outline: none;
+  border-radius: 20px;
+  font-size: 30px;
+  color: var(--accent-color);
+  font-family: var(--font-family-accent);
+}
+
+.error {
+  color: red;
+  font-size: 16px;
+  font-family: var(--font-family-accent);
+  margin-top: 4px;
+}

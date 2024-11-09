@@ -1,0 +1,79 @@
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: var(--bg-color);
+  padding: 20px;
+  border-radius: 8px;
+  width: 50%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 50vh;
+  justify-content: center;
+}
+
+.title {
+  color: var(--accent-color);
+  font-size: 30px;
+  margin: 0;
+}
+
+.input {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid var(--accent-modules-color);
+  outline: none;
+  border-radius: 20px;
+  font-size: 30px;
+  color: var(--accent-color);
+  font-family: var(--font-family-accent);
+}
+
+.modalButtons {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.cancelButton,
+.saveButton {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-family-accent);
+  font-size: 16px;
+}
+
+.cancelButton {
+  background-color: #ccc;
+}
+
+.saveButton {
+  background-color: var(--accent-modules-color);
+  color: var(--accent-extra-color);
+}
+
+.saveButton:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+@media (width < 730px) {
+  .modal {
+    width: 100%;
+  }
+}

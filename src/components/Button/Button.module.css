@@ -1,0 +1,25 @@
+.button {
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: var(--font-family-accent);
+  color: var(--accent-color);
+  background-color: var(--accent-modules-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: #ac9fbb;
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+.button:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
