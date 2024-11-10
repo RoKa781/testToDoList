@@ -1,4 +1,3 @@
-import { useTodo } from '@/hooks/useTodo';
 import {
   ChangeEvent,
   SyntheticEvent,
@@ -6,6 +5,7 @@ import {
   useRef,
   useState,
 } from 'react';
+import { useTodo } from '@/hooks/useTodo';
 import Button from '../Button/Button';
 import st from './Drawer.module.css';
 
@@ -15,7 +15,11 @@ type DrawerProps = {
   anchor: 'left' | 'right';
 };
 
-export const Drawer: React.FC<DrawerProps> = ({ open, closeHandler, anchor }) => {
+export const Drawer: React.FC<DrawerProps> = ({
+  open,
+  closeHandler,
+  anchor,
+}) => {
   const { addTodo } = useTodo();
   const [textValue, setTextValue] = useState('');
   const [error, setError] = useState<string | null>(null);

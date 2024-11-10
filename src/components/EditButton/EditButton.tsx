@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Modal from '../Modal/Modal';
-import st from './EditButton.module.css';
 import PencilSVG from '../PencilSVG/PencilSVG';
+import st from './EditButton.module.css';
 
 type TEditButton = {
   editHandler: (newText: string) => void;

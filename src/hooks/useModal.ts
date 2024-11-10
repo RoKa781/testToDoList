@@ -1,11 +1,11 @@
 import { useLayoutEffect, useRef } from 'react';
-import useKeyDown from './useHandleKeyDown';
 import { ButtonsEnum } from '@/types';
+import useKeyDown from './useHandleKeyDown';
 
 export const useModal = (
   closeModal: () => void,
   handleSave: () => void,
-  isSaveDisabled: boolean
+  isSaveDisabled: boolean,
 ) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -32,7 +32,5 @@ export const useModal = (
     }
   }, []);
 
-
   return { inputRef, handleBackdropClick };
 };
-

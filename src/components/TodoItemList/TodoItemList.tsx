@@ -1,5 +1,5 @@
-import { useTodo } from "@/hooks/useTodo";
-import TodoItem from "../TodoItem/TodoItem";
+import { useTodo } from '@/hooks/useTodo';
+import TodoItem from '../TodoItem/TodoItem';
 import st from './TodoItemList.module.css';
 
 const TodoItemList: React.FC = () => {

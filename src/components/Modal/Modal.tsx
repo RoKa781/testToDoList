@@ -1,6 +1,6 @@
-import { useModal } from '@/hooks/useModal';
 import { useCallback, useState } from 'react';
-import ReactDOM from 'react-dom';
+import { createPortal } from 'react-dom';
+import { useModal } from '@/hooks/useModal';
 import st from './Modal.module.css';
 
 type ModalProps = {
@@ -20,9 +20,13 @@ const Modal: React.FC<ModalProps> = ({ closeModal, editHandler }) => {
 
   const isSaveDisabled = !newText.trim() || newText.includes('!');
 
-  const { inputRef, handleBackdropClick } = useModal(closeModal, handleSave, isSaveDisabled);
+  const { inputRef, handleBackdropClick } = useModal(
+    closeModal,
+    handleSave,
+    isSaveDisabled,
+  );
 
-  return ReactDOM.createPortal(
+  return createPortal(
     <div className={st.modalBackdrop} onClick={handleBackdropClick}>
       <div className={st.modal} tabIndex={0}>
         <h3 className={st.title}>Edit Todo</h3>
@@ -48,7 +52,7 @@ const Modal: React.FC<ModalProps> = ({ closeModal, editHandler }) => {
         </div>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 };
 

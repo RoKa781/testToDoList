@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import st from './AppLayout.module.css';
 import AppHeader from '../AppHeader/AppHeader';
+import st from './AppLayout.module.css';
 
 type AppLayoutProps = {
   children: ReactNode;

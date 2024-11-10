@@ -1,6 +1,6 @@
-import { Todo } from '@/types';
 import { nanoid } from 'nanoid';
 import { createContext, useState, ReactNode } from 'react';
+import { Todo } from '@/types';
 
 type TodoContextType = {
   todos: Todo[];
@@ -28,8 +28,8 @@ export const TodoProvider: React.FC<{ children: ReactNode }> = ({
   const editTodo = (id: string, newText: string) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        todo.id === id ? { ...todo, text: newText } : todo
-      )
+        todo.id === id ? { ...todo, text: newText } : todo,
+      ),
     );
   };
 

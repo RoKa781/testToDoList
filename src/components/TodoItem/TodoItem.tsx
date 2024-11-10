@@ -1,9 +1,9 @@
-import { useTodo } from '@/hooks/useTodo';
 import { useState } from 'react';
+import { useTodo } from '@/hooks/useTodo';
+import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 import DeleteButton from '../DeleteButton/DeleteButton';
 import EditButton from '../EditButton/EditButton';
 import st from './TodoItem.module.css';
-import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 
 type TItem = {
   id: string;

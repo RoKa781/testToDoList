@@ -1,50 +1,23 @@
-# React + TypeScript + Vite
+# ToDo List
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Проект представляет собой стильное и функциональное приложение для управления задачами, созданное с использованием React, TypeScript и Vite.
 
-Currently, two official plugins are available:
+## Архитектура MVP
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Для упрощения разработки и достижения минимально жизнеспособного продукта (MVP) проект построен на простоте и удобстве. Основные компоненты архитектуры:
 
-## Expanding the ESLint configuration
+**Модель (Model):**  
+Отвечает за хранение данных и бизнес-логику приложения. В данном случае модель представлена контекстом `TodoContext`, который управляет состоянием списка задач, а также включает методы для добавления, редактирования и удаления задач.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+**Представление (View):**  
+Отвечает за визуальную часть приложения, отображая данные пользователю. В проекте это компоненты, такие как `TodoItem`, `TodoItemList`, `Drawer`, `ConfirmationModal` и другие, которые обеспечивают интуитивно понятный интерфейс и визуальное представление задач.
 
-- Configure the top-level `parserOptions` property like this:
+**Презентер (Presenter):**  
+Обрабатывает взаимодействие между моделью и представлением, обеспечивая логику работы с данными и реакцию на действия пользователя. В этом проекте роль презентера выполняют пользовательские хуки, такие как `useTodo`, которые предоставляют доступ к данным и методам модели и управляют логикой взаимодействия с пользователем.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Возможности
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **Добавление новых задач:** Пользователи могут вводить текст задачи и добавлять её в список, делая планирование задач быстрым и простым.
+- **Редактирование существующих задач:** Задачи можно редактировать через модальное окно, при этом происходит проверка на допустимость символов и корректность ввода.
+- **Удаление задач:** Пользователи могут удалять задачи с подтверждением через модальное окно, что минимизирует ошибки.
+- **Валидация ввода:** Все вводимые задачи проверяются на наличие недопустимых символов (например, `!`), что помогает избежать ошибок и несанкционированных вводов.
