@@ -1,4 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
+import useKeyDown from './useHandleKeyDown';
+import { ButtonsEnum } from '@/types';
 
 export const useModal = (
   closeModal: () => void,
@@ -7,32 +9,29 @@ export const useModal = (
 ) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
+  const handleKeyPress = (e: KeyboardEvent) => {
+    if (e.key === ButtonsEnum.ESCAPE) {
+      closeModal();
     }
-
-    const handleKeyPress = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        closeModal();
-      }
-      if (e.key === 'Enter' && !isSaveDisabled) {
-        handleSave();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyPress);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-    };
-  }, [closeModal, handleSave, isSaveDisabled]);
+    if (e.key === ButtonsEnum.ENTER && !isSaveDisabled) {
+      handleSave();
+    }
+  };
 
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       closeModal();
     }
   };
+
+  useKeyDown(handleKeyPress);
+
+  useLayoutEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
 
   return { inputRef, handleBackdropClick };
 };

@@ -1,9 +1,9 @@
-import { useTodo } from '../../hooks/useTodo';
+import { useTodo } from '@/hooks/useTodo';
+import { useState } from 'react';
 import DeleteButton from '../DeleteButton/DeleteButton';
 import EditButton from '../EditButton/EditButton';
-import { useState } from 'react';
-import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 import st from './TodoItem.module.css';
+import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 
 type TItem = {
   id: string;
@@ -49,5 +49,3 @@ const TodoItem: React.FC<TItem> = ({ id, title }) => {
 };
 
 export default TodoItem;
-
-

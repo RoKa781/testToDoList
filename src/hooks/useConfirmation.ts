@@ -1,27 +1,22 @@
-import { useEffect, useCallback } from 'react';
+import { ButtonsEnum } from '@/types';
+import useKeyDown from './useHandleKeyDown';
 
 const useConfirmation = (onConfirm: () => void, onCancel: () => void) => {
-  const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    if (e.key === 'Escape') {
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === ButtonsEnum.ESCAPE) {
       onCancel();
-    } else if (e.key === 'Enter') {
+    } else if (e.key === ButtonsEnum.ENTER) {
       onConfirm();
     }
-  }, [onConfirm, onCancel]);
+  };
 
-  const handleOverlayClick = useCallback((e: React.MouseEvent) => {
+  const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onCancel();
     }
-  }, [onCancel]);
+  };
 
-  useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [handleKeyDown]);
+  useKeyDown(handleKeyDown);
 
   return {
     handleOverlayClick,
@@ -29,5 +24,3 @@ const useConfirmation = (onConfirm: () => void, onCancel: () => void) => {
 };
 
 export default useConfirmation;
-
-

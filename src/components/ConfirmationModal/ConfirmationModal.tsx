@@ -1,6 +1,6 @@
-import React from 'react';
+import useConfirmation from '@/hooks/useConfirmation';
+import ReactDOM from 'react-dom';
 import st from './ConfirmationModal.module.css';
-import useConfirmation from '../../hooks/useConfirmation';
 
 interface ConfirmationModalProps {
   message: string;
@@ -11,14 +11,15 @@ interface ConfirmationModalProps {
 const ConfirmationModal: React.FC<ConfirmationModalProps> = ({ message, onConfirm, onCancel }) => {
   const { handleOverlayClick } = useConfirmation(onConfirm, onCancel);
 
-  return (
+  return ReactDOM.createPortal(
     <div className={st.overlay} onClick={handleOverlayClick}>
       <div className={st.dialog}>
         <h3 className={st.title}>{message}</h3>
         <button onClick={onConfirm} className={st.confirmButton}>Confirm</button>
         <button onClick={onCancel} className={st.cancelButton}>Cancel</button>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 

@@ -1,21 +1,21 @@
+import { useTodo } from '@/hooks/useTodo';
 import {
   ChangeEvent,
   SyntheticEvent,
-  useState,
+  useLayoutEffect,
   useRef,
-  useEffect,
+  useState,
 } from 'react';
 import Button from '../Button/Button';
 import st from './Drawer.module.css';
-import { useTodo } from '../../hooks/useTodo';
 
 type DrawerProps = {
   open: boolean;
-  onClose: () => void;
+  closeHandler: () => void;
   anchor: 'left' | 'right';
 };
 
-export const Drawer: React.FC<DrawerProps> = ({ open, onClose, anchor }) => {
+export const Drawer: React.FC<DrawerProps> = ({ open, closeHandler, anchor }) => {
   const { addTodo } = useTodo();
   const [textValue, setTextValue] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -42,7 +42,7 @@ export const Drawer: React.FC<DrawerProps> = ({ open, onClose, anchor }) => {
     }
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (open && inputRef.current) {
       inputRef.current.focus();
     }
@@ -52,7 +52,7 @@ export const Drawer: React.FC<DrawerProps> = ({ open, onClose, anchor }) => {
     <>
       <div
         className={`${st.overlay} ${!open ? st.overlayHidden : st.overlayOpen}`}
-        onClick={onClose}
+        onClick={closeHandler}
         aria-hidden="true"
       />
       <div
@@ -61,9 +61,9 @@ export const Drawer: React.FC<DrawerProps> = ({ open, onClose, anchor }) => {
           anchor === 'left' ? st.left : st.right
         }`}
       >
-        <div className={`${st.header} ${open ? st.animate : st.hidden}`}>
-          Toolbar
-        </div>
+        <header className={`${st.header} ${open ? st.animate : st.hidden}`}>
+          <h2>Toolbar</h2>
+        </header>
         <form
           className={`${st.form} ${open ? '' : st.hidden}`}
           onSubmit={submitHandler}

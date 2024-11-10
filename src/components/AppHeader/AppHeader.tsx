@@ -1,5 +1,5 @@
 import st from './AppHeader.module.css';
-import reactSvg from '../../assets/react.svg';
+import reactSvg from '@/assets/react.svg';
 
 const AppHeader = () => {
   return (

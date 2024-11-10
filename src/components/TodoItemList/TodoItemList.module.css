@@ -8,6 +8,12 @@
   gap: 20px;
 }
 
+.emptyMessage {
+  color: var(--accent-color);
+  text-align: center;
+  font-weight: bold;
+}
+
 .listItem {
   width: 100%;
   padding: 10px 10px;

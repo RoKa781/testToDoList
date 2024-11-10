@@ -2,13 +2,13 @@ import st from './Button.module.css';
 
 type TButtonProps = {
     title: string;
-    clickHandler?: () => void;
+    onClick?: () => void;
     disabled?: boolean;
 }
 
-const Button: React.FC<TButtonProps> = ({ title, clickHandler, disabled = false }) => {
+const Button: React.FC<TButtonProps> = ({ title, onClick, disabled = false }) => {
   return (
-    <button className={st.button} onClick={clickHandler} disabled={disabled}>
+    <button className={st.button} onClick={onClick} disabled={disabled}>
       {title}
     </button>
   );

@@ -1,10 +1,10 @@
+import AppLayout from '@/components/AppLayout/AppLayout';
+import Button from '@/components/Button/Button';
+import { Drawer } from '@/components/Drawer/Drawer';
+import TodoItemList from '@/components/TodoItemList/TodoItemList';
+import { TodoProvider } from '@/contexts/TodoProvider';
 import { useState } from 'react';
-import AppHeader from '../../components/AppHeader/AppHeader';
-import Button from '../../components/Button/Button';
-import { Drawer } from '../../components/Drawer/Drawer';
-import TodoItemList from '../../components/TodoItemList/TodoItemList';
 import st from './MainPage.module.css';
-import { TodoProvider } from '../../contexts/TodoProvider';
 
 const MainPage = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,22 +14,19 @@ const MainPage = () => {
   };
 
   return (
-    <>
-      <TodoProvider>
-        <AppHeader />
-        <main className={st.main}>
+      <AppLayout>
+        <TodoProvider>
           <div className={st.mainContainer}>
-            <Button title="Add todo" clickHandler={changeDrawerVisibility} />
+            <Button title="Add todo" onClick={changeDrawerVisibility} />
             <TodoItemList />
           </div>
           <Drawer
             open={isOpen}
-            onClose={changeDrawerVisibility}
+            closeHandler={changeDrawerVisibility}
             anchor={'left'}
           />
-        </main>
-      </TodoProvider>
-    </>
+        </TodoProvider>
+      </AppLayout>
   );
 };
 
